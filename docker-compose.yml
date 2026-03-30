@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: spring_db
+    restart: always
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: springdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - tesis-network
+
+  # El Backend en Spring Boot
+  backend:
+    build: 
+      context: ./backend-interfaces
+    container_name: spring_backend
+    restart: always
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+    environment:
+      # Sobreescribimos la URL para que apunte al contenedor 'db' en lugar de localhost
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/springdb
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=1234
+    networks:
+      - tesis-network
+
+  # Interfaz Pago Móvil
+  pagomovil-app:
+    build:
+      context: ./pago-movil-interfaz
+    container_name: react_pagomovil
+    restart: always
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    networks:
+      - tesis-network
+
+  # Interfaz Sistema Legacy
+  legacy-app:
+    build:
+      context: ./blacklist-interfaz
+    container_name: react_legacy
+    restart: always
+    ports:
+      - "5174:80"
+    depends_on:
+      - backend
+    networks:
+      - tesis-network
+
+volumes:
+  postgres_data:
+
+networks:
+  tesis-network:
+    driver: bridge

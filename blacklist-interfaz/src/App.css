@@ -1,0 +1,311 @@
+/* Reseteo y Tipografía Legacy */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 11.5px; /* Pequeña y densa */
+}
+
+/* Contenedor Principal */
+.system-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Barra superior oscura */
+.top-header {
+  background-color: #1a2a4a; /* Azul muy oscuro */
+  color: #fff;
+  display: flex;
+  padding: 3px 10px;
+  align-items: center;
+  border-bottom: 1px solid #000;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 20px;
+}
+
+.system-title {
+  color: #a0b0d0;
+}
+
+.main-layout {
+  display: flex;
+  flex-grow: 1;
+}
+
+/* Panel Izquierdo Completo */
+.left-panel {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Panel de Usuario Gris */
+.user-panel {
+  background-color: #d8dee8; /* Gris azulado claro */
+  padding: 5px;
+  border-right: 1px solid #a0a0a0;
+  color: #333;
+}
+
+/* Navegación Azul con Textura Recreada */
+.side-nav {
+  flex-grow: 1;
+  background-color: #2a3a5a; /* Azul base */
+  background-image: linear-gradient(#2a3a5a, #4a6a8a); /* Degradado */
+  border-right: 1px solid #1a1a1a;
+}
+
+/* Patrón de líneas sutil para imitar la textura de la imagen */
+.side-nav::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 1px, rgba(0,0,0,0.1) 1px, rgba(0,0,0,0.1) 2px);
+  pointer-events: none;
+}
+
+.nav-menu {
+  list-style-type: none;
+  padding-top: 5px;
+}
+
+.nav-menu li {
+  padding: 3px 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-menu li:hover {
+  background-color: #6a8a9a;
+}
+
+.sub-menu {
+  list-style-type: none;
+  padding-left: 15px;
+}
+
+.nav-menu .active-menu {
+  background-color: #4a6a8a;
+}
+
+.sub-menu .active-submenu {
+  color: #80c0ff; /* Azul más claro para el activo */
+  font-weight: bold;
+}
+
+.type-selector select option {
+  color: #000000; /* Fuerza el texto a negro */
+  background-color: #ffffff; /* Fuerza el fondo a blanco */
+}
+
+/* Área Principal */
+.main-content {
+  flex-grow: 1;
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.content-title {
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: underline;
+}
+
+/* Barra de Herramientas */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  background-color: #d8dee8;
+  padding: 5px;
+  border: 1px solid #a0a0a0;
+}
+
+.toolbar-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 50px;
+}
+
+.icon-placeholder {
+  width: 25px;
+  height: 25px;
+  background-color: #d8dee8;
+  border: 1px solid #7a7a7a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Sección de controles */
+.toolbar-controls {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.type-selector, .search-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.type-selector select, .search-box input {
+  margin-left: 5px;
+  border: 1px solid #7a7a7a;
+  background-color: #fff;
+  padding: 1px;
+}
+
+/* Tabla Exacta */
+.anti-fraude-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border: 1px solid #7a7a7a;
+}
+
+.anti-fraude-table th, .anti-fraude-table td {
+  border: 1px solid #a0a0a0;
+  padding: 2px 4px; /* Muy compacto */
+  text-align: left;
+}
+
+.anti-fraude-table th {
+  background-color: #c8ceda; /* Gris azulado más oscuro */
+  font-weight: bold;
+  color: #333;
+}
+
+/* Filas alternas */
+.anti-fraude-table tbody tr:nth-child(even) {
+  background-color: #e8eef0;
+}
+
+.anti-fraude-table td {
+  font-family: "Courier New", Courier, monospace; /* Fuente mono para datos */
+}
+
+/* --- ESTILOS DEL MODAL LEGACY --- */
+.legacy-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3); /* Un sombreado leve */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.legacy-modal-window {
+  background-color: #d4d0c8; /* Gris Windows 98/2000 */
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  width: 400px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.legacy-modal-header {
+  background-color: #000080; /* Azul oscuro clásico de ventana activa */
+  color: white;
+  padding: 3px 5px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.legacy-modal-header button {
+  background-color: #d4d0c8;
+  border-top: 1px solid #ffffff;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #404040;
+  border-bottom: 1px solid #404040;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.legacy-modal-header button:active {
+  border-top: 1px solid #404040;
+  border-left: 1px solid #404040;
+  border-right: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+}
+
+.legacy-modal-body {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.legacy-form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.legacy-form-group label {
+  font-weight: normal;
+  color: #000;
+}
+
+.legacy-form-group input {
+  width: 200px;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  padding: 2px 4px;
+}
+
+.legacy-modal-footer {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.legacy-btn {
+  background-color: #d4d0c8;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #404040;
+  border-bottom: 2px solid #404040;
+  padding: 4px 15px;
+  cursor: pointer;
+  color: #000;
+}
+
+.legacy-btn:active {
+  border-top: 2px solid #404040;
+  border-left: 2px solid #404040;
+  border-right: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+}
+
+/* Color para fila seleccionada */
+.anti-fraude-table tbody tr.selected-row {
+  background-color: #000080;
+  color: white;
+}
