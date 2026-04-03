@@ -19,7 +19,7 @@ function App() {
     setLoading(true);
     setSelectedRowId(null); // Limpiar selección al recargar
     try {
-      let endpoint = selectedType === 'LISTA BLANCA' 
+      let endpoint = selectedType === 'LISTA ANTI-FRAUDE' 
         ? 'http://localhost:8081/api/v1/whitelist' 
         : 'http://localhost:8081/api/v1/blacklist';
       const response = await axios.get(endpoint);
@@ -43,7 +43,7 @@ function App() {
   // Función para GUARDAR (Nuevo)
   const handleSave = async () => {
     try {
-      const isWhitelist = selectedType === 'LISTA BLANCA';
+      const isWhitelist = selectedType === 'LISTA ANTI-FRAUDE';
       const endpoint = isWhitelist 
         ? 'http://localhost:8081/api/v1/whitelist' 
         : 'http://localhost:8081/api/v1/blacklist';
@@ -84,7 +84,7 @@ function App() {
     const confirmDelete = window.confirm("¿Está seguro que desea eliminar este registro?");
     if (confirmDelete) {
       try {
-        const endpoint = selectedType === 'LISTA BLANCA' 
+        const endpoint = selectedType === 'LISTA ANTI-FRAUDE' 
           ? `http://localhost:8081/api/v1/whitelist/${selectedRowId}` 
           : `http://localhost:8081/api/v1/blacklist/${selectedRowId}`;
 
@@ -126,7 +126,7 @@ function App() {
 
         <main className="main-content">
           <h1 className="content-title">
-            {selectedType === 'LISTA BLANCA' ? 'Lista Blanca' : 'Lista Anti Fraude'}
+            {selectedType === 'LISTA ANTI-FRAUDE' ? 'Lista Excepciones' : 'Lista Anti Fraude'}
           </h1>
 
           <div className="toolbar">
@@ -147,7 +147,7 @@ function App() {
                 <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)}>
                   <option value="SELECCIONE">SELECCIONE TIPO...</option>
                   <option value="RESTRICCIONES">LISTA ANTI-FRAUDE</option>
-                  <option value="LISTA BLANCA">LISTA EXCEPCIONES</option>
+                  <option value="LISTA ANTI-FRAUDE">LISTA EXCEPCIONES</option>
                 </select>
               </div>
               <div className="search-box">
@@ -170,7 +170,7 @@ function App() {
           <div className="table-container">
             <table className="anti-fraude-table">
               <thead>
-                {selectedType === 'LISTA BLANCA' ? (
+                {selectedType === 'LISTA ANTI-FRAUDE' ? (
                   <tr>
                     <th></th><th>FECHA REGISTRO</th><th>CÉDULA / RIF</th><th>NOMBRE</th><th>DIRECCIÓN IP</th><th>USUARIO REGISTRO</th>
                   </tr>
@@ -199,7 +199,7 @@ function App() {
                       </td>
                       <td>{row.fechaRegistro}</td>
                       <td>{row.documento}</td>
-                      {selectedType === 'LISTA BLANCA' ? (
+                      {selectedType === 'LISTA ANTI-FRAUDE' ? (
                         <><td>{row.nombre}</td><td>{row.ip}</td><td>{row.usuarioRegistro}</td></>
                       ) : (
                         <><td>{row.ip}</td><td>{row.referencia}</td><td>{row.horaBloqueo}</td></>
@@ -236,7 +236,7 @@ function App() {
               </div>
 
               {/* Campos específicos de Lista Negra */}
-              {selectedType !== 'LISTA BLANCA' && (
+              {selectedType !== 'LISTA ANTI-FRAUDE' && (
                 <>
                   <div className="legacy-form-group">
                     <label>Referencia:</label>
