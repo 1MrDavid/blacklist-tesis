@@ -146,10 +146,8 @@ function App() {
                 <label>Tipo :</label>
                 <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)}>
                   <option value="SELECCIONE">SELECCIONE TIPO...</option>
-                  <option value="RESTRICCIONES">RESTRICCIONES</option>
-                  <option value="TRANSACCIONES">TRANSACCIONES</option>
-                  <option value="FALTAS">FALTAS</option>
-                  <option value="LISTA BLANCA">LISTA BLANCA</option>
+                  <option value="RESTRICCIONES">LISTA ANTI-FRAUDE</option>
+                  <option value="LISTA BLANCA">LISTA EXCEPCIONES</option>
                 </select>
               </div>
               <div className="search-box">
